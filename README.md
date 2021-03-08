@@ -34,7 +34,7 @@ No cmd do Windows:(não testado!)
 
 # API EndPoints
 
-## Carrro
+## Peça
 
 Rotas:
 
