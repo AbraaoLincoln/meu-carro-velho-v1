@@ -1,0 +1,10 @@
+GET http://localhost:8080/anuncio/chevette
+
+###
+
+GET http://localhost:8080/anuncio/opala
+
+
+###
+
+GET http://localhost:8080/anuncio/kadett

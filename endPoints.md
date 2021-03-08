@@ -1,16 +1,16 @@
 API EndPoints
 
-# Peças
+# Carrro
 
 Rotas:
 
-`GET    meucarrovelho.com.br/api/peça/MODELO-D0-CARRO/peças`
+`GET    meucarrovelho.com.br/api/carro/MODELO-D0-CARRO/peças`
 
-`GET    meucarrovelho.com.br/api/peça/MODELO-D0-CARRO/peçaTipo`
+`GET    meucarrovelho.com.br/api/carro/MODELO-D0-CARRO/peçaTipo`
 
-`POST   meucarrovelho.com.br/api/peça/MODELO-D0-CARRO`
+`POST   meucarrovelho.com.br/api/carro/MODELO-D0-CARRO`
 
-`DELETE meucarrovelho.com.br/api/peça/MODELO-D0-CARRO/peçasId`
+`DELETE meucarrovelho.com.br/api/carro/MODELO-D0-CARRO/peçasId`
 
 # Anuncios
 
