@@ -52,6 +52,8 @@ Rotas:
 
 `POST     meucarrovelho.com.br/api/anuncio`
 
+`PUT      meucarrovelho.com.br/api/anuncio/anuncioId`
+
 `PUT      meucarrovelho.com.br/api/anuncio/visto/anuncioId`
 
 `PUT      meucarrovelho.com.br/api/anuncio/disponivel/anuncioId`
