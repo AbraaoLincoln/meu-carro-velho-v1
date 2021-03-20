@@ -13,6 +13,7 @@ create table usuario (
 create table anuncio(
 	id int auto_increment,
     data date,
+    preco decimal(7,2),
     estado varchar(10),
     descricao varchar(255),
     usuario int,

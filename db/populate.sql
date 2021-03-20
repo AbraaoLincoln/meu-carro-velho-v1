@@ -3,9 +3,9 @@ use meuCorroVelho;
 insert into usuario (nome, senha, email) values ('Maya Daniela Márcia Moura', '123', 'mayadanielamarciamoura_@rmsolutions.inf.br'),
 ('Ayla Carla Daniela Sales', '321', 'aylacarladanielasales@wsiconsultores.com.br');
 
-insert into anuncio (data, estado, descricao, usuario, visualizacoes) values ('2021-03-15', 'disponivel', 'peca nova zerada', 1, 0),
-('2021-03-10', 'vendido', 'so vendo', 1, 0),
-('2021-03-20', 'disponivel', 'tem um pequeno defeito', 2, 0);
+insert into anuncio (data, preco, estado, descricao, usuario, visualizacoes) values ('2021-03-15', 150,'disponivel', 'peca nova zerada', 1, 0),
+('2021-03-10', 200, 'vendido', 'so vendo', 1, 0),
+('2021-03-20', 50, 'disponivel', 'tem um pequeno defeito', 2, 0);
 
 insert into imagens values ('/anuncio1/imgs', 1), ('/anuncio2/imgs', 2), ('/anuncio3/imgs', 3);
 
