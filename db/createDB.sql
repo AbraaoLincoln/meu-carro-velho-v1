@@ -16,6 +16,7 @@ create table anuncio(
     estado varchar(10),
     descricao varchar(255),
     usuario int,
+    visualizacoes int,
     
     primary key(id),
     

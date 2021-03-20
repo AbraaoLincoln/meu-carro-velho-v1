@@ -8,10 +8,6 @@ Rotas:
 
 `GET    meucarrovelho.com.br/api/carro/MODELO-D0-CARRO/peçaTipo`
 
-`POST   meucarrovelho.com.br/api/carro/MODELO-D0-CARRO`
-
-`DELETE meucarrovelho.com.br/api/carro/MODELO-D0-CARRO/peçasId`
-
 # Anuncios
 
 Rotas:
@@ -20,10 +16,10 @@ Rotas:
 
 `GET      meucarrovelho.com.br/api/anuncio/MODELO-D0-CARRO/peçasTipo`
 
-`POST     meucarrovelho.com.br/api/anuncio/MODELO-D0-CARRO`
+`POST     meucarrovelho.com.br/api/anuncio`
 
-`PUT      meucarrovelho.com.br/api/anuncico/visto/anuncioId`
+`PUT      meucarrovelho.com.br/api/anuncio/visto/anuncioId`
 
 `PUT      meucarrovelho.com.br/api/anuncio/disponivel/anuncioId`
 
-`DELETE   meucarrovelho.com.br/api/anuncio/MODELO-D0-CARRO/anuncioId`
+`DELETE   meucarrovelho.com.br/api/anuncio/anuncioId`
