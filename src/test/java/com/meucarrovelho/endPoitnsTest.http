@@ -1,10 +1,19 @@
+GET http://localhost:8080/api/anuncio/1/pecas
+
+###
 POST http://localhost:8080/api/anuncio
 Content-Type: application/json
 
 {
     "preco": "100",
-    "descricao": "teste4 do post anuncio",
+    "descricao": "teste5 do post anuncio",
     "usuario": 2,
     "imagens": [{"src": "img1"}, {"src": "img2"}, {"src": "img3"}],
-    "pecas": [{"tipo": "volante", "estado": "novo", "carro": "1"}, {"tipo": "banco", "estado": "usado1", "carro": "10"}]
+    "pecas":{
+        "carro": "1",
+        "pecas": [
+            {"tipo": "volante", "estado": "novo"}, 
+            {"tipo": "banco", "estado": "usado"}
+        ]
+    }
 }

@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 
 @Entity
 @Table(name = "anuncio")
-public class Anuncio {
+public class VisaoAnuncio {
     private int id;
     private String data;
     private float preco;
@@ -19,7 +19,7 @@ public class Anuncio {
     private String descricao;
     private int usuario;
     private int visualizacoes;
-    private PecasCarro pecas;
+    private ArrayList<Peca> pecas;
     private ArrayList<Imagem> imagens;
 
     
@@ -81,11 +81,11 @@ public class Anuncio {
     }
 
     @Transient
-    public PecasCarro getPecas() {
+    public ArrayList<Peca> getPecas() {
         return pecas;
     }
     @Transient
-    public void setPecas(PecasCarro pecas) {
+    public void setPecas(ArrayList<Peca> pecas) {
         this.pecas = pecas;
     }
 
@@ -97,6 +97,4 @@ public class Anuncio {
     public void setImagens(ArrayList<Imagem> imagens) {
         this.imagens = imagens;
     }
-
-    
 }

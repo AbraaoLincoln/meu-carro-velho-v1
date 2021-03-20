@@ -83,3 +83,8 @@ create table peca(
 	on update cascade
     on delete cascade
 );
+
+create view anuncio_completo as
+select a.id, a.data, a.preco, a.estado as anuncio_estado, a.descricao, a.usuario, a.visualizacoes, p.tipo, p.estado as peca_estado, p.carro
+from anuncio as a, peca as p 
+where a.id = p.anuncio;
