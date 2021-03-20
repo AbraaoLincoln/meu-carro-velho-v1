@@ -15,7 +15,7 @@ import com.meucarrovelho.meucarrovelhodemo.model.Anuncio;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class MeucarrovelhoDemoApplicationTests {
+public class Teste {
 	@LocalServerPort
 	private int port;
 	
@@ -23,8 +23,8 @@ public class MeucarrovelhoDemoApplicationTests {
 	private TestRestTemplate restTemplate;
 
 	@Test
-	public void testeSeAnuncioPecasEstaFuncionando()  {
-		ResponseEntity<Anuncio[]> res = restTemplate.getForEntity("http://localhost:" + port + "/api/anuncio/1/pecas", Anuncio[].class);
+	public void teste()  {
+		ResponseEntity<Anuncio[]> res = restTemplate.getForEntity("http://localhost:" + port + "/api/anuncio/2/pecas", Anuncio[].class);
 		Anuncio[] anuncios = res.getBody();
 		for(int i = 0; i < anuncios.length; i++) {
 			// assert anuncios[i].getPecas().getCarro() == 2;
