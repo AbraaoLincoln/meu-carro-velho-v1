@@ -1,5 +1,5 @@
-create database meuCorroVelho;
-use meuCorroVelho;
+create database meuCarroVelho;
+use meuCarroVelho;
 
 create table usuario (
 	id int auto_increment,
@@ -31,7 +31,12 @@ create table imagens(
 	src varchar(255),
     anuncio int,
     
-    primary key(src)
+    primary key(src),
+    
+    foreign key(anuncio)
+		references anuncio(id)
+	on update cascade
+    on delete cascade
 );
 
 create table conta_ofertas(

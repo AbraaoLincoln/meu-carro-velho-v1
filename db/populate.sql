@@ -1,4 +1,4 @@
-use meuCorroVelho;
+use meuCarroVelho;
 
 insert into usuario (nome, senha, email) values ('Maya Daniela Márcia Moura', '123', 'mayadanielamarciamoura_@rmsolutions.inf.br'),
 ('Ayla Carla Daniela Sales', '321', 'aylacarladanielasales@wsiconsultores.com.br');
