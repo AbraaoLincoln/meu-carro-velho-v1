@@ -26,5 +26,4 @@ jobs:
         docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/userCreation.sql'
         docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/createDB.sql'
         docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/populate.sql'
-        Executand os teste
-        ./gradlew test
+        
