@@ -28,7 +28,7 @@ public class GetAnuncios {
 		Anuncio[] anuncios = res.getBody();
 		for(int i = 0; i < anuncios.length; i++) {
 			// assert anuncios[i].getPecas().getCarro() == 2;
-			assertEquals(2, anuncios[i].getPecas().getCarro());
+			assertEquals(1, anuncios[i].getPecas().getCarro());
 		} 
 	}
 
