@@ -3,6 +3,9 @@ package com.meucarrovelho.meucarrovelhodemo.controllers;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import javax.transaction.Transactional;
 
 import com.meucarrovelho.meucarrovelhodemo.daos.AnuncioRepository;
 import com.meucarrovelho.meucarrovelhodemo.daos.CarroRepository;
@@ -19,9 +22,12 @@ import com.meucarrovelho.meucarrovelhodemo.model.Usuario;
 import com.meucarrovelho.meucarrovelhodemo.util.Mensagem;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -68,7 +74,43 @@ public class AnuncioController {
 
         return listOfAnuncios;
     }
+    
+    
+	@GetMapping("/listar-todos")
+	public List<Anuncio> listarTodos() {
+		return (List<Anuncio>) this.anuncioRepository.findAll();
+	}
+    
+    
+	@PutMapping("/{pCodigo}")
+	@Transactional
+	public ResponseEntity<Anuncio> atualizar(@PathVariable Integer pCodigo,
+			@RequestBody Anuncio anuncioAtualizado) {
 
+		if (!anuncioRepository.existsById(pCodigo)) {
+			return ResponseEntity.notFound().build();
+		}
+
+		anuncioAtualizado.setId(pCodigo);
+
+		Anuncio anuncioSalvo = anuncioRepository.save(anuncioAtualizado);
+
+		return ResponseEntity.ok(anuncioSalvo);
+	}
+	
+	
+	@DeleteMapping("/{pCodigo}/pecas")
+	public ResponseEntity<Void> remover(@PathVariable Integer pCodigo) {
+		if (!anuncioRepository.existsById(pCodigo)) {
+			return ResponseEntity.notFound().build();
+		}
+
+		anuncioRepository.deleteById(pCodigo);
+
+		return ResponseEntity.noContent().build();
+	}
+
+	
     @PostMapping()
     public Mensagem saveAnuncio(@RequestBody Anuncio novoAnuncio) {
         System.out.println("Salvando novo anuncio...");
