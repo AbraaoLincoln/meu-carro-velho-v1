@@ -5,4 +5,8 @@ docker exec -it mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/userCrea
 docker exec -it mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/createDB.sql'
 
 docker exec -it mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/populate.sql'
-./gradlew test --tests com.meucarrovelho.meucarrovelhodemo.Teste
+
+./gradlew test
+
+./gradlew test --tests com.meucarrovelho.meucarrovelhodemo.GetAnuncios
+./gradlew test --tests com.meucarrovelho.meucarrovelhodemo.PostAnuncio
