@@ -19,9 +19,13 @@ import com.meucarrovelho.meucarrovelhodemo.model.Usuario;
 import com.meucarrovelho.meucarrovelhodemo.util.Mensagem;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -141,4 +145,32 @@ public class AnuncioController {
             throw new BusinessException(listOfErros);
         }
     }
+
+    @PutMapping("/{pCodigo}")
+	@Transactional
+	public ResponseEntity<Anuncio> atualizar(@PathVariable Integer pCodigo,
+			@RequestBody Anuncio anuncioAtualizado) {
+
+		if (!anuncioRepository.existsById(pCodigo)) {
+			return ResponseEntity.notFound().build();
+		}
+
+		anuncioAtualizado.setId(pCodigo);
+
+		Anuncio anuncioSalvo = anuncioRepository.save(anuncioAtualizado);
+
+		return ResponseEntity.ok(anuncioSalvo);
+	}
+	
+	
+	@DeleteMapping("/{pCodigo}")
+	public ResponseEntity<Void> remover(@PathVariable Integer pCodigo) {
+		if (!anuncioRepository.existsById(pCodigo)) {
+			return ResponseEntity.notFound().build();
+		}
+
+		anuncioRepository.deleteById(pCodigo);
+
+		return ResponseEntity.noContent().build();
+	}
 }

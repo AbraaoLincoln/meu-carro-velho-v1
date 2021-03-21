@@ -17,3 +17,27 @@ Content-Type: application/json
         ]
     }
 }
+
+###
+PUT http://localhost:8080/api/anuncio/41
+Content-Type: application/json
+
+{
+    "preco": "100",
+    "data": "2021-03-21",
+    "descricao": "teste5 do post anuncio",
+    "estado": "asd",
+    "usuario": 2,
+    "imagens": [{"src": "img1"}, {"src": "img2"}, {"src": "img3"}],
+    "pecas":{
+        "carro": "1",
+        "pecas": [
+            {"tipo": "volante", "estado": "novo"}, 
+            {"tipo": "banco", "estado": "usado"}
+        ]
+    }
+}
+
+###
+
+DELETE http://localhost:8080/api/anuncio/40
