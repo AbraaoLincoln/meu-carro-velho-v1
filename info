@@ -1,0 +1,8 @@
+docker run -d -p 3307:3306 --name mysql-teste -v "/home/abraao/Documentos/java/meucarrovelho-demo/db:/scriptDB" -e MYSQL_ROOT_PASSWORD=123 mysql:8.0.23
+
+docker exec -it mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/userCreation.sql'
+
+docker exec -it mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/createDB.sql'
+
+docker exec -it mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/populate.sql'
+./gradlew test --tests com.meucarrovelho.meucarrovelhodemo.Teste
