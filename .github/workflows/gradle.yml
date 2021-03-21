@@ -20,11 +20,11 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
-    - name: Subindo o container do mysql
-      run: docker run -d -p 3306:3306 --name mysql-teste -v "./db:/scriptDB" -e MYSQL_ROOT_PASSWORD=123 mysql:8.0.23
-      run: docker exec -it mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/userCreation.sql'
-    - name: Criando o Banco e Populando
-      run: docker exec -it mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/createDB.sql'
-      run: docker exec -it mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/populate.sql'
-    - name: Executand os teste
-      run: ./gradlew test
+    - name: Subindo o container do mysql, criando o banco, populando e testando
+      run: |
+        docker run -d -p 3306:3306 --name mysql-teste -v "./db:/scriptDB" -e MYSQL_ROOT_PASSWORD=123 mysql:8.0.23
+        docker exec -it mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/userCreation.sql'
+        docker exec -it mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/createDB.sql'
+        docker exec -it mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/populate.sql'
+        Executand os teste
+        ./gradlew test
