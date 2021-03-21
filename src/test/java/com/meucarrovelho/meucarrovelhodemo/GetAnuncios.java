@@ -15,7 +15,7 @@ import com.meucarrovelho.meucarrovelhodemo.model.Anuncio;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class MeucarrovelhoDemoApplicationTests {
+public class GetAnuncios {
 	@LocalServerPort
 	private int port;
 	

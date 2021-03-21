@@ -95,10 +95,13 @@ public class AnuncioController {
             }
             pecaRepository.saveAll(novoAnuncio.getPecas().getPecas());
 
-            return new Mensagem("Anuncio salvo com sucesso");
+            Mensagem msg = new Mensagem("Anuncio salvo com sucesso");
+            msg.setAnuncioId(novoAnuncio.getId()); 
+            return msg;
         } catch (BusinessException e) {
             Mensagem msg = new Mensagem("Error");
             msg.setListOfErros(e.getListOfErros());
+            msg.setAnuncioId(0);
             return msg;
         }
     }
