@@ -35,4 +35,5 @@ jobs:
         docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < s2.sql'
         docker cp $(pwd)/db/populate.sql mysql-teste:/s3.sql
         docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < s3.sql'
+        ./gradlew test
         
