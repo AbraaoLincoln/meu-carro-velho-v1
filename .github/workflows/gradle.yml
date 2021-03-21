@@ -20,8 +20,6 @@ jobs:
           MYSQL_ROOT_PASSWORD: 123
         ports:
           - 3306:3306
-        volumes:
-          - $(pwd)/db:/scriptDB
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
@@ -30,7 +28,10 @@ jobs:
         java-version: 11
     - name: Subindo o container do mysql, criando o banco, populando e testando
       run: |
-        docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/userCreation.sql'
-        docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/createDB.sql'
-        docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/populate.sql'
+        docker cp $(pwd)/db/userCreation.sql mysql-teste:/s1.sql
+        docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < s1.sql'
+        docker cp $(pwd)/db/userCreation.sql mysql-teste:/s2.sql
+        docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < s2.sql'
+        docker cp $(pwd)/db/userCreation.sql mysql-teste:/s3.sql
+        docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < s3.sql'
         
