@@ -11,17 +11,17 @@ on:
 
 jobs:
   build:
-
+    name: Teste
     runs-on: ubuntu-latest
-    mysql-teste:
-      postgres:
+    services:
+      mysql-teste:
         image: mysql:8.0.23
         env:
           MYSQL_ROOT_PASSWORD: 123
         ports:
           - 3306:3306
         volumes:
-       - $(pwd)/db:/scriptDB
+          - $(pwd)/db:/scriptDB
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
@@ -33,4 +33,4 @@ jobs:
         docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/userCreation.sql'
         docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/createDB.sql'
         docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/populate.sql'
-        ./gradlew test
+        
