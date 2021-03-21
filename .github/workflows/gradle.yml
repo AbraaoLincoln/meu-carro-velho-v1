@@ -23,8 +23,8 @@ jobs:
     - name: Subindo o container do mysql, criando o banco, populando e testando
       run: |
         docker run -d -p 3306:3306 --name mysql-teste -v "$(pwd)/db:/scriptDB" -e MYSQL_ROOT_PASSWORD=123 mysql:8.0.23
-        docker exec -it mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/userCreation.sql'
-        docker exec -it mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/createDB.sql'
-        docker exec -it mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/populate.sql'
+        docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/userCreation.sql'
+        docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/createDB.sql'
+        docker exec mysql-teste /bin/bash -c 'mysql -uroot -p123 < scriptDB/populate.sql'
         Executand os teste
         ./gradlew test
