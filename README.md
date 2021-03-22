@@ -38,17 +38,17 @@ No cmd do Windows:(não testado!)
 
 Rotas:
 
-`GET    meucarrovelho.com.br/api/carro/MODELO-D0-CARRO/peças`
+`GET    meucarrovelho.com.br/api/carro/peças`
 
-`GET    meucarrovelho.com.br/api/carro/MODELO-D0-CARRO/peçaTipo`
+`GET    meucarrovelho.com.br/api/carro/peçaTipo`
 
 ## Anuncios
 
 Rotas:
 
-`GET      meucarrovelho.com.br/api/anuncio/MODELO-D0-CARRO/peças`
+`GET      meucarrovelho.com.br/api/anuncio/carro/peças`
 
-`GET      meucarrovelho.com.br/api/anuncio/MODELO-D0-CARRO/peçasTipo`
+`GET      meucarrovelho.com.br/api/anuncio/carro/peçasTipo`
 
 `POST     meucarrovelho.com.br/api/anuncio`
 

@@ -6,7 +6,7 @@ Content-Type: application/json
 
 {
     "preco": "100",
-    "descricao": "teste5 do post anuncio",
+    "descricao": "teste do post anuncio",
     "usuario": 2,
     "imagens": [{"src": "img1"}, {"src": "img2"}, {"src": "img3"}],
     "pecas":{
@@ -19,14 +19,14 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:8080/api/anuncio/41
+PUT http://localhost:8080/api/anuncio/42
 Content-Type: application/json
 
 {
     "preco": "100",
     "data": "2021-03-21",
     "descricao": "teste5 do post anuncio",
-    "estado": "asd",
+    "estado": "vendido",
     "usuario": 2,
     "imagens": [{"src": "img1"}, {"src": "img2"}, {"src": "img3"}],
     "pecas":{
