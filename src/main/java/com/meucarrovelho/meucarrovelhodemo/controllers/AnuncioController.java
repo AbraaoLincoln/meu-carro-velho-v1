@@ -112,6 +112,7 @@ public class AnuncioController {
 
             novoAnuncio.setData(LocalDate.now().toString());
             novoAnuncio.setEstado("disponivel");
+            novoAnuncio.setDisponivel(LocalDate.now().toString());
             novoAnuncio = anuncioRepository.save(novoAnuncio);
 
             for(Imagem img : novoAnuncio.getImagens()) {
@@ -179,6 +180,16 @@ public class AnuncioController {
             return "visualizao do anuncio atualizada com sucesso";
         }else {
             return "anuncio não existe";
+        }
+    }
+
+    @PutMapping(path = "/disponivel/{anuncioId}")
+    public String updateDisponivel(@PathVariable("anuncioId") int anuncioId) {
+        if(anuncioRepository.existsById(anuncioId)) {
+            anuncioRepository.updateAnuncioDisponivel(anuncioId, LocalDate.now().toString());
+            return "Anuncio Atualizado";
+        }else {
+            return "Anuncio não existe";
         }
     }
 

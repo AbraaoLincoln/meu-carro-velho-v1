@@ -14,4 +14,9 @@ public interface AnuncioRepository extends CrudRepository<Anuncio, Integer>{
     @Transactional
     @Query(value = "update anuncio set visualizacoes = visualizacoes + 1 where id = :anuncioId", nativeQuery = true)
     public void updateAnuncioVisualizacao(@Param("anuncioId") int anuncioId);
+
+    @Modifying
+    @Transactional
+    @Query(value = "update anuncio set disponivel = :data where id = :anuncioId", nativeQuery = true)
+    public void updateAnuncioDisponivel(@Param("anuncioId") int anuncioId, @Param("data") String data);
 }

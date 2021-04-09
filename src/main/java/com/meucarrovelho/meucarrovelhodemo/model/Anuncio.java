@@ -19,6 +19,7 @@ public class Anuncio {
     private String descricao;
     private int usuario;
     private int visualizacoes;
+    private String disponivel;
     private PecasCarro pecas;
     private ArrayList<Imagem> imagens;
 
@@ -78,6 +79,14 @@ public class Anuncio {
 
     public void setVisualizacoes(int visualizacoes) {
         this.visualizacoes = visualizacoes;
+    }
+
+    public String getDisponivel() {
+        return this.disponivel;
+    }
+
+    public void setDisponivel(String data) {
+        this.disponivel = data;
     }
 
     @Transient

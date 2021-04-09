@@ -1,4 +1,4 @@
-GET http://localhost:8080/api/anuncio/2/pecas
+GET http://localhost:8080/api/anuncio/1/pecas
 
 ###
 
@@ -24,11 +24,11 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:8080/api/anuncio/visto/3
+PUT http://localhost:8080/api/anuncio/visto/1
 
 ###
 
-PUT http://localhost:8080/api/anuncio/disponivel/3
+PUT http://localhost:8080/api/anuncio/disponivel/1
 
 ###
 PUT http://localhost:8080/api/anuncio/43
