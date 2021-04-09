@@ -24,11 +24,11 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:8080/api/anuncio/visto/1
+PUT http://localhost:8080/api/anuncio/visto/10
 
 ###
 
-PUT http://localhost:8080/api/anuncio/disponivel/1
+PUT http://localhost:8080/api/anuncio/disponivel/100
 
 ###
 PUT http://localhost:8080/api/anuncio/43
