@@ -1,4 +1,8 @@
-GET http://localhost:8080/api/anuncio/1/pecas
+GET http://localhost:8080/api/anuncio/2/pecas
+
+###
+
+GET http://localhost:8080/api/anuncio/1/volante
 
 ###
 POST http://localhost:8080/api/anuncio
@@ -19,13 +23,13 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:8080/api/anuncio/42
+PUT http://localhost:8080/api/anuncio/43
 Content-Type: application/json
 
 {
     "preco": "100",
-    "data": "2021-03-21",
-    "descricao": "teste5 do post anuncio",
+    "data": "2021-03-22",
+    "descricao": "teste do post anuncio",
     "estado": "vendido",
     "usuario": 2,
     "imagens": [{"src": "img1"}, {"src": "img2"}, {"src": "img3"}],
@@ -40,4 +44,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8080/api/anuncio/40
+DELETE http://localhost:8080/api/anuncio/43

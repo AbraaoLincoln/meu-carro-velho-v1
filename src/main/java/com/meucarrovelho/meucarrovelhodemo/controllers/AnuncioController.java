@@ -3,6 +3,8 @@ package com.meucarrovelho.meucarrovelhodemo.controllers;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.meucarrovelho.meucarrovelhodemo.daos.AnuncioRepository;
 import com.meucarrovelho.meucarrovelhodemo.daos.CarroRepository;
@@ -65,6 +67,30 @@ public class AnuncioController {
             PecasCarro pc = new PecasCarro();
             pc.setCarro(carro);
             pc.setPecas(anuncioPecas.get(anuncioId));
+            anuncio.setPecas(pc);
+            anuncio.setImagens(imagemRepository.getImagensByAnuncio(anuncioId));
+            listOfAnuncios.add(anuncio);
+        }
+
+        return listOfAnuncios;
+    }
+
+    @GetMapping(path = "/{carro}/{tipoPeca}")
+    public Iterable<Anuncio> getAnunciosByPecaType(@PathVariable("carro") int carro, @PathVariable("tipoPeca") String tipoPeca) {
+        ArrayList<Anuncio> listOfAnuncios = new ArrayList<>();
+        System.out.println("pegando todos os anuncios de pecas do tipo " + tipoPeca + " para o carro: " + carro + "...");
+        ArrayList<Peca> pecas = pecaRepository.getPecaByCarroAndType(carro, tipoPeca);
+
+        Set<Integer> anunciosId = new HashSet<>();
+        for(Peca p : pecas) {
+            anunciosId.add(p.getAnuncio());
+        }
+
+        for(int anuncioId : anunciosId) {
+            Anuncio anuncio = anuncioRepository.findById(anuncioId).orElseGet(() -> null);
+            PecasCarro pc = new PecasCarro();
+            pc.setCarro(carro);
+            pc.setPecas(pecaRepository.getPecaByAnuncio(anuncioId));
             anuncio.setPecas(pc);
             anuncio.setImagens(imagemRepository.getImagensByAnuncio(anuncioId));
             listOfAnuncios.add(anuncio);
