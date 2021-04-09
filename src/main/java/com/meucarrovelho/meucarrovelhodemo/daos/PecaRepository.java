@@ -17,4 +17,5 @@ public interface PecaRepository extends CrudRepository<Peca, Integer>{
 
     @Query(value = "select * from peca where anuncio = :anuncioId", nativeQuery = true)
     public ArrayList<Peca> getPecaByAnuncio(@Param("anuncioId") int anuncioId);
+
 }

@@ -172,6 +172,16 @@ public class AnuncioController {
         }
     }
 
+    @PutMapping(path = "/visto/{anuncioId}")
+    public String updateNumOfVisualizacoes(@PathVariable("anuncioId") int anuncioId) {
+        if(anuncioRepository.existsById(anuncioId)) {
+            anuncioRepository.updateAnuncioVisualizacao(anuncioId);
+            return "visualizao do anuncio atualizada com sucesso";
+        }else {
+            return "anuncio não existe";
+        }
+    }
+
     @PutMapping("/{pCodigo}")
 	@Transactional
 	public ResponseEntity<Anuncio> atualizar(@PathVariable Integer pCodigo,

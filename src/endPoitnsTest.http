@@ -23,6 +23,14 @@ Content-Type: application/json
 }
 
 ###
+
+PUT http://localhost:8080/api/anuncio/visto/3
+
+###
+
+PUT http://localhost:8080/api/anuncio/disponivel/3
+
+###
 PUT http://localhost:8080/api/anuncio/43
 Content-Type: application/json
 

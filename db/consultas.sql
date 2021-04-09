@@ -19,3 +19,7 @@ where a.id = p.anuncio;
 select * from anuncio_completo;
 
 select * from peca where carro = 2;
+
+select * from peca where anuncio = 1;
+
+update anuncio set visualizacoes = visualizacoes + 1 where id = 1;
