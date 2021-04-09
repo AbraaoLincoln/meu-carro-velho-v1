@@ -212,9 +212,11 @@ Resquest:
 Response:
 
 Em caso de sucesso:
+
 `visualizao do anuncio atualizada com sucesso`
 
 Em caso do anuncio não existir
+
 `anuncio não existe`
 
 Request:
@@ -223,9 +225,11 @@ Request:
 Response:
 
 Em caso de sucesso:
+
 `Anuncio Atualizado`
 
 Em caso do anuncio não existir
+
 `Anuncio não existe`
 
 Request:
