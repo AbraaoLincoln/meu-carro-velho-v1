@@ -220,6 +220,7 @@ Em caso do anuncio não existir
 `anuncio não existe`
 
 Request:
+
 `PUT http://localhost:8080/api/anuncio/disponivel/anuncioId`
 
 Response:

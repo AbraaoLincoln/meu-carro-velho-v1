@@ -56,7 +56,7 @@ DELETE http://localhost:8080/api/anuncio/43
 
 ###
 
-GET http://localhost:8080/api/1
+GET http://localhost:8080/api/2
 
 ###
 
