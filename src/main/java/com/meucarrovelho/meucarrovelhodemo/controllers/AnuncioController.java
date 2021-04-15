@@ -33,9 +33,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.MDC;
+
 @RestController
 @RequestMapping(path = "/api/anuncio")
 public class AnuncioController {
+    private static final Logger logger = LoggerFactory.getLogger(PecasController.class);
     @Autowired
     private AnuncioRepository anuncioRepository;
     @Autowired
@@ -49,8 +54,9 @@ public class AnuncioController {
 
     @GetMapping(path = "/{carro}/pecas")
     public Iterable<Anuncio> getAnuncios(@PathVariable("carro") int carro) {
+        logger.trace("Executing getAnuncios");
         ArrayList<Anuncio> listOfAnuncios = new ArrayList<>();
-        System.out.println("pegando todos os anuncios de pecas para o carro: " + carro + "...");
+        // System.out.println("pegando todos os anuncios de pecas para o carro: " + carro + "...");
         ArrayList<Peca> pecas = pecaRepository.getPecaByCarro(carro);
 
         HashMap<Integer, ArrayList<Peca>> anuncioPecas = new HashMap<>();
@@ -78,8 +84,9 @@ public class AnuncioController {
 
     @GetMapping(path = "/{carro}/{tipoPeca}")
     public Iterable<Anuncio> getAnunciosByPecaType(@PathVariable("carro") int carro, @PathVariable("tipoPeca") String tipoPeca) {
+        logger.trace("Executing getAnunciosByPecaType");
         ArrayList<Anuncio> listOfAnuncios = new ArrayList<>();
-        System.out.println("pegando todos os anuncios de pecas do tipo " + tipoPeca + " para o carro: " + carro + "...");
+        // System.out.println("pegando todos os anuncios de pecas do tipo " + tipoPeca + " para o carro: " + carro + "...");
         ArrayList<Peca> pecas = pecaRepository.getPecaByCarroAndType(carro, tipoPeca);
 
         Set<Integer> anunciosId = new HashSet<>();
@@ -102,7 +109,7 @@ public class AnuncioController {
 
     @PostMapping()
     public Mensagem saveAnuncio(@RequestBody Anuncio novoAnuncio) {
-        System.out.println("Salvando novo anuncio...");
+        logger.trace("Executing saveAnuncio");
         try {
             validateAnuncio(novoAnuncio);
 
@@ -139,7 +146,7 @@ public class AnuncioController {
     }
 
     private void validateAnuncio(Anuncio anuncioToValidade) throws BusinessException{
-        System.out.println("Validando o anuncio...");
+        logger.trace("Executing validateAnuncio");
         ArrayList<String> listOfErros = new ArrayList<>();
         Usuario user = usuarioRepository.findById(anuncioToValidade.getUsuario()).orElseGet(() -> null);
 
@@ -162,7 +169,7 @@ public class AnuncioController {
     }
 
     private void validatePeca(Peca pecaToValidade) throws BusinessException{
-        System.out.println("Validando a peca...");
+        logger.trace("Executing validatePeca");
         ArrayList<String> listOfErros = new ArrayList<>();
         
         if(!(pecaToValidade.getEstado().equals("novo") || pecaToValidade.getEstado().equals("usado"))) {
@@ -175,29 +182,31 @@ public class AnuncioController {
     }
 
     @PutMapping(path = "/visto/{anuncioId}")
-    public String updateNumOfVisualizacoes(@PathVariable("anuncioId") int anuncioId) {
+    public Mensagem updateNumOfVisualizacoes(@PathVariable("anuncioId") int anuncioId) {
+        logger.trace("Executing updateNumOfVisualizacoes");
         if(anuncioRepository.existsById(anuncioId)) {
             anuncioRepository.updateAnuncioVisualizacao(anuncioId);
-            return "visualizao do anuncio atualizada com sucesso";
+            return new Mensagem("visualizao do anuncio atualizada com sucesso");
         }else {
-            return "anuncio não existe";
+            return new Mensagem("anuncio não existe");
         }
     }
 
     @PutMapping(path = "/disponivel/{anuncioId}")
-    public String updateDisponivel(@PathVariable("anuncioId") int anuncioId) {
+    public Mensagem updateDisponivel(@PathVariable("anuncioId") int anuncioId) {
+        logger.trace("Executing updateDisponivel");
         if(anuncioRepository.existsById(anuncioId)) {
             anuncioRepository.updateAnuncioDisponivel(anuncioId, LocalDate.now().toString());
-            return "Anuncio Atualizado";
+            return new Mensagem("Anuncio Atualizado");
         }else {
-            return "Anuncio não existe";
+            return new Mensagem("Anuncio não existe");
         }
     }
 
     @PutMapping("/{pCodigo}")
 	@Transactional
-	public ResponseEntity<Anuncio> atualizar(@PathVariable Integer pCodigo,
-			@RequestBody Anuncio anuncioAtualizado) {
+	public ResponseEntity<Anuncio> atualizar(@PathVariable Integer pCodigo, @RequestBody Anuncio anuncioAtualizado) {
+        logger.trace("Executing atualizar");
 
 		if (!anuncioRepository.existsById(pCodigo)) {
 			return ResponseEntity.notFound().build();
@@ -213,6 +222,7 @@ public class AnuncioController {
 	
 	@DeleteMapping("/{pCodigo}")
 	public ResponseEntity<Void> remover(@PathVariable Integer pCodigo) {
+        logger.trace("Executing remover");
 		if (!anuncioRepository.existsById(pCodigo)) {
 			return ResponseEntity.notFound().build();
 		}

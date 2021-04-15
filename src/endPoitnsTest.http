@@ -1,4 +1,4 @@
-GET http://localhost:8080/api/anuncio/1/pecas
+GET http://localhost:8080/api/anuncio/2/pecas
 
 ###
 
@@ -14,9 +14,9 @@ Content-Type: application/json
     "usuario": 2,
     "imagens": [{"src": "img1"}, {"src": "img2"}, {"src": "img3"}],
     "pecas":{
-        "carro": "1",
+        "carro": "2",
         "pecas": [
-            {"tipo": "volante", "estado": "novo"}, 
+            {"tipo": "luz-de-teto", "estado": "novo"}, 
             {"tipo": "banco", "estado": "usado"}
         ]
     }
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:8080/api/anuncio/visto/10
+PUT http://localhost:8080/api/anuncio/visto/2
 
 ###
 
@@ -52,11 +52,11 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8080/api/anuncio/43
+DELETE http://localhost:8080/api/anuncio/1
 
 ###
 
-GET http://localhost:8080/api/2
+GET http://localhost:8080/api/1
 
 ###
 
