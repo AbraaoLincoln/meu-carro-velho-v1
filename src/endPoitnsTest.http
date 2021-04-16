@@ -31,7 +31,7 @@ PUT http://localhost:8080/api/anuncio/visto/2
 PUT http://localhost:8080/api/anuncio/disponivel/100
 
 ###
-PUT http://localhost:8080/api/anuncio/43
+PUT http://localhost:8080/api/anuncio/6
 Content-Type: application/json
 
 {
@@ -39,8 +39,9 @@ Content-Type: application/json
     "data": "2021-03-22",
     "descricao": "teste do post anuncio",
     "estado": "vendido",
+    "disponivel": "2021-04-16",
     "usuario": 2,
-    "imagens": [{"src": "img1"}, {"src": "img2"}, {"src": "img3"}],
+    "imagens": [{"src": "img11"}, {"src": "img2"}, {"src": "img3"}],
     "pecas":{
         "carro": "1",
         "pecas": [
